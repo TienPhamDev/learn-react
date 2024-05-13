@@ -49,6 +49,8 @@ function App(){
     return <div>
             <h1>Hello test react</h1>
             <Pizza />
+            <Pizza />
+            <Pizza />
             </div>;
 };
 function Pizza(){
