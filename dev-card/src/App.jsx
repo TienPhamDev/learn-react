@@ -4,6 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  
+  return (
+    <Card />
+  )
 };
+function Card(){
+  return (
+    <div>
+      <h1 className='text-xl text-red-500'>Test tailwindcss</h1>
+    </div>
+  );
+}
 export default App
