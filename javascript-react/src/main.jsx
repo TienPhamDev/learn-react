@@ -56,19 +56,21 @@ function App(){
 };
 function Header(){
     const styles = {color:"red",fontSize:"48px",textTransform:"uppercase"}
-    return  <header className="text-3xl">
+    return  <header className="header">
                 <h1>Fast React Pizza Co.</h1>
             </header>
 }
 function Menu(){
-    return  <div>
+    return  <main className="menu">
                 <h2>Our Menu</h2>
-                <Pizza />
-                <Pizza />
-                <Pizza />
-                <Pizza />
-                <Pizza />
-            </div>;
+                <Pizza 
+                    name="Pizza Spinaci",
+                    ingredients="Tomato, mozarella, spinach, and ricotta cheese",
+                    photoName = "pizzas/spinaci.jpg",
+                    price ="10"
+                />
+                
+            </main>;
 }
 function Footer(){
     const hour = new Date().getHours;
@@ -79,13 +81,13 @@ function Footer(){
     // if(hour >= openHours && hour <= closeHours ) alert("We're currently open");
     // else alert("We're currently close");
     
-    return <footer>{new Date().toLocaleTimeString()}. We're currently open.</footer>
+    return <footer className="footer">{new Date().toLocaleTimeString()}. We're currently open.</footer>
 }
-function Pizza(){
+function Pizza(props){
     return (<div>
-                <img src="pizzas/spinaci.jpg" alt="spinaci" />
-                <h2>Pizza Spinaci</h2>
-                <p>Tomato, mozarella, spinach, and ricotta cheese</p>
+                <img src={props.photoName} alt={props.name} />
+                <h3>{props.name}</h3>
+                <p>{props.ingredients}</p>
             </div>);
 };
 const root = ReactDOM.createRoot(document.querySelector("#root"));
