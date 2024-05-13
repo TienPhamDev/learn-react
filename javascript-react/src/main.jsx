@@ -64,10 +64,10 @@ function Menu(){
     return  <main className="menu">
                 <h2>Our Menu</h2>
                 <Pizza 
-                    name="Pizza Spinaci",
-                    ingredients="Tomato, mozarella, spinach, and ricotta cheese",
-                    photoName = "pizzas/spinaci.jpg",
-                    price ="10"
+                    name="Pizza Spinaci" 
+                    ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+                    photoName = "pizzas/spinaci.jpg"
+                    price ={10}
                 />
                 
             </main>;
@@ -84,10 +84,13 @@ function Footer(){
     return <footer className="footer">{new Date().toLocaleTimeString()}. We're currently open.</footer>
 }
 function Pizza(props){
-    return (<div>
+    return (<div className="pizza">
                 <img src={props.photoName} alt={props.name} />
-                <h3>{props.name}</h3>
-                <p>{props.ingredients}</p>
+                <div>
+                    <h3>{props.name}</h3>
+                    <p>{props.ingredients}</p>
+                    <span>{props.price + 3}</span>
+                </div>
             </div>);
 };
 const root = ReactDOM.createRoot(document.querySelector("#root"));
