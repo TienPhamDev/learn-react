@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css"
+import './tailwindcss.css';
 const pizzaData = [
     {
       name: "Focaccia",
@@ -46,13 +48,39 @@ const pizzaData = [
   ];
   
 function App(){
-    return <div>
-            <h1>Hello test react</h1>
-            <Pizza />
-            <Pizza />
-            <Pizza />
+    return  <div className="container">
+                <Header/>
+                <Menu />
+                <Footer />
             </div>;
 };
+function Header(){
+    const styles = {color:"red",fontSize:"48px",textTransform:"uppercase"}
+    return  <header className="text-3xl">
+                <h1>Fast React Pizza Co.</h1>
+            </header>
+}
+function Menu(){
+    return  <div>
+                <h2>Our Menu</h2>
+                <Pizza />
+                <Pizza />
+                <Pizza />
+                <Pizza />
+                <Pizza />
+            </div>;
+}
+function Footer(){
+    const hour = new Date().getHours;
+    const openHours = 12;
+    const closeHours = 22;
+    const isOpen = hour >= openHours && hour <= closeHours;
+    
+    // if(hour >= openHours && hour <= closeHours ) alert("We're currently open");
+    // else alert("We're currently close");
+    
+    return <footer>{new Date().toLocaleTimeString()}. We're currently open.</footer>
+}
 function Pizza(){
     return (<div>
                 <img src="pizzas/spinaci.jpg" alt="spinaci" />
@@ -60,7 +88,7 @@ function Pizza(){
                 <p>Tomato, mozarella, spinach, and ricotta cheese</p>
             </div>);
 };
-const root = ReactDOM.createRoot(document.querySelector("#root"))
+const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(
     <React.StrictMode>
         <App/>
