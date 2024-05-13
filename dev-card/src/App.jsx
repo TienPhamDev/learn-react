@@ -13,9 +13,9 @@ function App() {
 };
 function Card(){
   return (
-    <div className='border-2'>
+    <div className='border-2 border-slate-900'>
       <img src="" alt="" />
-      <h1>Tien Pham</h1>
+      <h1 className='text-xl'>Tien Pham</h1>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias eaque expedita iusto sit blanditiis beatae reiciendis illum. Repudiandae praesentium quae ducimus, vel sed, ad dolorem tenetur, vero numquam fugit sapiente?</p>
     </div>
   );
