@@ -63,10 +63,10 @@ function Header(){
 function Menu(){
     return  <main className="menu">
               <h2>Our Menu</h2>
-              <div>
+              <ul className="pizzas">
                 {pizzaData.map((pizza) => {
-                    return <Pizza pizzaObj = {pizza}/>})}
-              </div>
+                    return <Pizza pizzaObj = {pizza} key={pizza.name}/>})}
+              </ul>
               {/* <Pizza 
                   name="Pizza Spinaci" 
                   ingredients="Tomato, mozarella, spinach, and ricotta cheese"
@@ -88,14 +88,14 @@ function Footer(){
     return <footer className="footer">{new Date().toLocaleTimeString()}. We're currently open.</footer>
 }
 function Pizza(props){
-    return (<div className="pizza">
+    return (<li className="pizza">
                 <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
                 <div>
                     <h3>{props.pizzaObj.name}</h3>
                     <p>{props.pizzaObj.ingredients}</p>
                     <span>{props.pizzaObj.price + 3}</span>
                 </div>
-            </div>);
+            </li>);
 };
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(
