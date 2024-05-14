@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
   return (
-    <div className='container mx-auto w-1/2'>
+    <div className='container mx-auto'>
       <Card />
 
     </div>
@@ -13,18 +13,25 @@ function App() {
 };
 function Card(){
   return (
-    <div className='border-4 border-slate-900 mt-8'>
-      <img src="" alt="" />
+    <div className='border-4 border-slate-900 mt-6 w-1/3'>
+      <img src="./public/tien.jpg" alt="avatar" className='w-full h-54'
+      />
       <Bio/>
     </div>
   );
 }
 function Bio(){
   return (
-    <div className='p-8'>
-      <h1 className='text-xl'>Tien Pham</h1>
-      <p className='py-2'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias eaque expedita iusto sit blanditiis beatae reiciendis illum. Repudiandae praesentium quae ducimus, vel sed, ad dolorem tenetur, vero numquam fugit sapiente?</p>
-      <div className='flex gap-2'>
+    <div className='p-6'>
+      <h1 className='text-3xl'>Tien Pham</h1>
+      <p className='py-2'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias eaque expedita iusto sit blanditiis beatae reiciendis </p>
+      <SkillList />
+    </div>
+  );
+}
+function SkillList(){
+  return (
+    <div className='flex flex-wrap gap-2'>
         <Skill 
           name = "HTML"
           color = "bg-red-500"
@@ -46,7 +53,6 @@ function Bio(){
           emoji = "&#129299;"
         />
       </div>
-    </div>
   );
 }
 //thumb up &#128077; nerd face &#129299;
