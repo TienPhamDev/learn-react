@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css"
+import "./index.css";
 import './tailwindcss.css';
 const pizzaData = [
     {
@@ -67,7 +67,7 @@ function Menu(){
                     name="Pizza Spinaci" 
                     ingredients="Tomato, mozarella, spinach, and ricotta cheese"
                     photoName = "pizzas/spinaci.jpg"
-                    price ={10}
+                    price ={3}
                 />
                 
             </main>;
