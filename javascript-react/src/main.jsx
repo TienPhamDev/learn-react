@@ -65,13 +65,20 @@ function Menu(){
     // const pizzas = [];
     const numPizzas = pizzas.length;
     return  <main className="menu">
-              <h2>Our Menu</h2>
-            { numPizzas > 0 ? <ul className="pizzas w-3/4">
-                      { pizzas.map((pizza) => {
-                        return <Pizza pizzaObj = {pizza} key={pizza.name}/>}) 
-                      }
-                        </ul> : <p>We're still working on the menu. Please come back later.</p>
+      <h2>Our Menu</h2>
+      {numPizzas > 0 ? (
+        <React.Fragment>
+            <p>
+              Authentic Italian cuisine. 6 creatuve dishes to choose from. All from our stone oven,all organic, all delicious.
+            </p>
+        <ul className="pizzas w-3/4">
+            { pizzas.map((pizza) => {
+                return <Pizza pizzaObj = {pizza} key={pizza.name}/>}) 
             }
+        </ul>
+      </React.Fragment>)
+        : (<p>We're still working on the menu. Please come back later.</p>
+            )}
               {/* <Pizza 
                   name="Pizza Spinaci" 
                   ingredients="Tomato, mozarella, spinach, and ricotta cheese"
@@ -92,15 +99,17 @@ function Footer(){
     
     return  <footer className="footer">
               {isOpen ? <p>We're open until {closeHours}:00. Come visit us or order online.</p> : <p>We're welcome you back between {openHours}:00 - {closeHours}:00</p>}
+              <button className="btn">Order</button>
             </footer>
 }
-function Pizza(props){
+function Pizza({ pizzaObj }) {
+    console.log(pizzaObj)
     return (<li className="pizza">
-                <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+                <img src={pizzaObj.photoName} alt={pizzaObj.name} />
                 <div>
-                    <h3>{props.pizzaObj.name}</h3>
-                    <p>{props.pizzaObj.ingredients}</p>
-                    <span>{props.pizzaObj.price + 3}</span>
+                    <h3>{pizzaObj.name}</h3>
+                    <p>{pizzaObj.ingredients}</p>
+                    <span>{pizzaObj.price + 3}</span>
                 </div>
             </li>);
 };
