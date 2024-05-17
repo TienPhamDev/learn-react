@@ -2,7 +2,38 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+const skills = [
+  {
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "#2662EA"
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D"
+  },
+  {
+    skill: "Web Design",
+    level: "advanced",
+    color: "#C3DCAF"
+  },
+  {
+    skill: "Git and GitHub",
+    level: "intermediate",
+    color: "#E84F33"
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#60DAFB"
+  },
+  {
+    skill: "Svelte",
+    level: "beginner",
+    color: "#FF3B00"
+  }
+];
 function App() {
   return (
     <div className='container mx-auto'>
@@ -29,38 +60,24 @@ function Bio(){
     </div>
   );
 }
-function SkillList(){
+function SkillList() {
+  const data = skills;
+
   return (
-    <div className='flex flex-wrap gap-2'>
-        <Skill 
-          name = "HTML"
-          color = "bg-red-500"
-          emoji = "&#129299;"
-          />
-        <Skill
-          name = "JAVASCRIPT"
-          color = "bg-yellow-500"
-          emoji = "&#128077;"
-          />
-        <Skill
-          name = "REACT"
-          color = "bg-sky-500"
-          emoji = "&#129299;"
-        />
-        <Skill
-          name = "GITHUB"
-          color = "bg-slate-500"
-          emoji = "&#129299;"
-        />
-      </div>
+    <ul className='flex flex-wrap gap-2'>
+      {data.map((el) => {
+        return <Skill skillObj={el} key={el.skill} />
+      })}
+    </ul>
   );
 }
-//thumb up &#128077; nerd face &#129299;
-function Skill(props){
-  let style = `p-2 rounded-md ${props.color}`;
+//thumb up &#128077; nerd face &#129299;bicep emojo 	&#128170;
+function Skill({ skillObj }) {
+  let colors = `bg-[${skillObj.color}]` 
+  let style = `p-2 rounded-md ${colors}`;
   return (
     <span className={style}>
-      {props.name} {props.emoji}
+      {skillObj.skill} 
     </span>
   );
 };
