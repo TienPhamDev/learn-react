@@ -64,6 +64,7 @@ function SkillList() {
   const data = skills;
 
   return (
+    
     <ul className='flex flex-wrap gap-2'>
       {data.map((el) => {
         return <Skill skillObj={el} key={el.skill} />
@@ -73,12 +74,21 @@ function SkillList() {
 }
 //thumb up &#128077; nerd face &#129299; bicep emojo 	&#128170;
 function Skill({ skillObj }) {
-  let colors = `bg-[${skillObj.color}]` 
-  let style = `p-2 rounded-md ${colors}`;
+  console.log(skillObj)
+  let style = `p-2 rounded-md bg-red-500`;
   return (
-    <span className={style}>
-      {skillObj.skill} 
-    </span>
+    <li className={`p-2 rounded-md`} style={{backgroundColor:`${skillObj.color}`}}>
+      {skillObj.skill} {levelEmoji(skillObj.level)}
+    </li>
   );
 };
+function levelEmoji(e){
+  if (e === "beginner"){
+    return <span>&#129299;</span>
+  } else if (e === "intermediate"){
+    return <span>&#128170;</span>
+  } else{
+    return <span>&#128077;</span>
+  }
+}
 export default App
