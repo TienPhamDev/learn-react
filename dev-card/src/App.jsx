@@ -71,7 +71,7 @@ function SkillList() {
     </ul>
   );
 }
-//thumb up &#128077; nerd face &#129299;bicep emojo 	&#128170;
+//thumb up &#128077; nerd face &#129299; bicep emojo 	&#128170;
 function Skill({ skillObj }) {
   let colors = `bg-[${skillObj.color}]` 
   let style = `p-2 rounded-md ${colors}`;
