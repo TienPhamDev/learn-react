@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+const initialItems = [
+  { id: 1, description: "Passports", quantity: 2, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: true },
+];
+export default function App(){
+  return <div className="app">
+    <Logo/>
+    <Form/>
+    <PackingList/>
+    <Stats/>
+  </div>
+}
+function Logo(){
+  return <h1>🏝️ Far away ?</h1>
+}
+function Form(){
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <form className="add-form">
+      <h3>What do you want for your trip ?</h3>
+      <select>
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+      </select>
+    </form>
   )
 }
-
-export default App
+function PackingList(){
+  return <div className="list">
+    <ul>
+      {initialItems.map(e => {
+        return <Item item = {e}/>
+      })}
+    </ul>
+    </div>
+}
+function Item({item}){
+  return <li>
+    <span style={item.packed ? {textDecoration: "line-through"} : {}}>
+      {item.quantity} {item.description}
+    </span>
+    <button>❌</button>
+  </li>
+}
+function Stats(){
+  return <div className="stats">
+    <em>
+      You have x item on your list, and you already packed x
+    </em>
+  </div>
+}
