@@ -47,13 +47,15 @@ function Flashcards(){
     })}
     </div>
 }
-function Question(props) {
+function Question({ questionObj }) {
   const [selected,setSelected] = useState(false);
   function handleClick() {
     setSelected(e => !e)
   }
   return <div className={selected ? "selected" : ""} onClick={handleClick}>
-    {selected ? props.questionObj.answer : props.questionObj.question }
+    <p>
+      {selected ? questionObj.answer : questionObj.question }
+    </p>
   </div>
 }
 export default App;
