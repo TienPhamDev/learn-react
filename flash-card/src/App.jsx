@@ -32,17 +32,18 @@ const questionsData = [
   }
 ];
 function App() {
+  return (
+    <Flashcards/>
+  )
+}
+function Flashcards(){
   const questions = questionsData;
   
-  return (
-    <>
-    <div className="flashcards">
-      {questions.map((question) => {
-        return <Question questionObj={question} key = {question.id} />  
-      })}
+  return  <div className="flashcards">
+    {questions.map((question) => {
+      return <Question questionObj={question} key = {question.id} />  
+    })}
     </div>
-    </>
-  )
 }
 function Question({ questionObj }) {
   function handleClick(e) {
