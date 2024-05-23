@@ -40,22 +40,22 @@ function App() {
 }
 function Flashcards(){
   const questions = questionsData;
-  
+  const [selected,setSelected] = useState(null);
+  function handleClick(id) {
+    setSelected(id);
+  }
   return  <div className="flashcards">
     {questions.map((question) => {
-      return <Question questionObj={question} key={question.id} />  
+      return <div
+        key={question.id} 
+        className={selected === question.id ? "selected" : ""}
+        onClick={()=> handleClick(question.id)}
+        >
+          <p>
+            {selected === question.id ? question.answer : question.question}
+          </p>
+      </div> 
     })}
     </div>
-}
-function Question({ questionObj }) {
-  const [selected,setSelected] = useState(false);
-  function handleClick() {
-    setSelected(e => !e)
-  }
-  return <div className={selected ? "selected" : ""} onClick={handleClick}>
-    <p>
-      {selected ? questionObj.answer : questionObj.question }
-    </p>
-  </div>
 }
 export default App;
