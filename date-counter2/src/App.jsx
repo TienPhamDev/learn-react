@@ -1,29 +1,38 @@
 import { useState } from "react";
 
 function App() {
-  const [step, setStep] = useState(1);
+  const [value, setValue] = useState(1);
   const [count, setCount] = useState(0);
-  function handlePlusStep() {
-    setStep((s)=> s+1)
+  
+  function handleReset() {
+    setCount(0)
+    setValue(1)
   }
-  function handleMinusStep() {
-    setStep((s)=> s-1)
+  function handleInputRange(e) {
+    setValue(Number(e.target.value))
   }
   function handlePlusCount() {
     
-    setCount(s => s + step)
+    setCount(s => s + value)
   }
   function handleMinusCount() {
-    setCount(s => s - step)
+    setCount(s => s - value)
+  }
+  function handleInputCount(e) {
+    setCount(Number(e.target.value))
   }
   const date = new Date();
   date.setDate(date.getDate() + count)
   return <div style={{ textAlign: "center" }}>
     <div>
-      <button onClick={handleMinusStep}>-</button><span>step : {step}</span><button onClick={handlePlusStep}>+</button>
+      <input type="range" min="0" max="10" value={value}
+              onChange={handleInputRange} />
+      <span>{value }</span>
     </div>
     <div>
-      <button onClick={handleMinusCount}>-</button><span>Count : {count}</span><button onClick={handlePlusCount}>+</button>
+      <button onClick={handleMinusCount}>-</button>
+      <input type="text" value={count} onChange={handleInputCount} />
+      <button onClick={handlePlusCount}>+</button>
     </div>
     <p>
       <span>
@@ -36,6 +45,12 @@ function App() {
       </span>
       <span>{date.toLocaleString()}</span>
     </p>
+    { value !== 1 || count !== 0
+      ? 
+      <button onClick={handleReset}>Reset</button>
+      :
+      null
+    }
   </div>
 }
 
