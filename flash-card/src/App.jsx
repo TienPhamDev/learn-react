@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const questionsData = [
   {
     id: 3457,
@@ -41,18 +43,17 @@ function Flashcards(){
   
   return  <div className="flashcards">
     {questions.map((question) => {
-      return <Question questionObj={question} key = {question.id} />  
+      return <Question questionObj={question} key={question.id} />  
     })}
     </div>
 }
-function Question({ questionObj }) {
-  function handleClick(e) {
-    if (e.classList.contains("selected")) {
-      e.classList.toggle("selected")
-    }
+function Question(props) {
+  const [selected,setSelected] = useState(false);
+  function handleClick() {
+    setSelected(e => !e)
   }
-  return <div onClick={handleClick}>
-    {questionObj.question}
+  return <div className={selected ? "selected" : ""} onClick={handleClick}>
+    {selected ? props.questionObj.answer : props.questionObj.question }
   </div>
 }
 export default App;
