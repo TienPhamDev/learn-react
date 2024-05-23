@@ -42,7 +42,7 @@ function Flashcards(){
   const questions = questionsData;
   const [selected,setSelected] = useState(null);
   function handleClick(id) {
-    setSelected(id);
+    setSelected(id !== selected ? id : null);
   }
   return  <div className="flashcards">
     {questions.map((question) => {
