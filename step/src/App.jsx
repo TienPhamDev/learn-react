@@ -35,16 +35,19 @@ function App(){
           >
             Previous
           </button>
-          <button
-            style={{ backgroundColor: "#7950f2", color: "#fff" }}
-            onClick={handleNext}
-          >
-            Next
-          </button>
+          <Button bgColor={"#7950f2"} textColor={"#fff"} onClick={handleNext}  text={Next} />
         </div>
       </div>)}
     </>
     );
+}
+function Button({bgColor,textColor,onClick,text}){
+  return <button
+    style={{ backgroundColor: bgColor, color: textColor }}
+    onClick={onClick}
+    >
+      {text}
+    </button>
 }
 
 export default App;
