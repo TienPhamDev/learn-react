@@ -1,35 +1,45 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Bill />
+      <ServiceTips>
+        <span>How did you like the services?</span>
+      </ServiceTips>
+      <ServiceTips>
+        <span>How did your friend like the service?</span>
+      </ServiceTips>
     </>
   )
 }
-
+function Bill(){
+  const [bill,setBill] = useState(0)
+  function handleInput(e){
+    setBill(Number(e.target.value))
+  }
+  return <div>
+    <span>How much was the bill?</span>
+    <input type="text" id='bill' name='bill' value={bill} onChange={(e) => handleInput(e)} />
+  </div>
+}
+function ServiceTips({children}){
+  const [value,setValue] = useState("")
+  function handleSelect(e){
+    setValue(Number(e.target.value))
+  }
+  return (
+    <div>
+      <span>{children}</span>
+      <select value={value} onChange={(e) => handleSelect(e)}>
+        <option value={0}>Dislike(0)</option>
+        <option value={5}>Okay(5%)</option>
+        <option value={10}>Like(10%)</option>
+        <option value={20}>Love(20%)</option>
+      </select>
+    </div>
+  )
+}
 export default App
