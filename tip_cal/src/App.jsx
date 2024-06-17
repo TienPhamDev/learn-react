@@ -10,19 +10,21 @@ function App() {
     <>
       <Bill bill={bill} onChangeBill = {handleInput}/>
       <ServiceTips>
-        <span>How did you like the services?</span>
+        How did you like the services?  
       </ServiceTips>
       <ServiceTips>
-        <span>How did your friend like the service?</span>
+        How did your friend like the service? 
       </ServiceTips>
+      <OutPut />
+      <Reset />
     </>
   )
 }
 function Bill({bill , onChangeBill}){
 
   return <div>
-    <span>How much was the bill?</span>
-    <input type="text" id='bill' name='bill' value={bill} onChange={e => onChangeBill(e)} />
+    <label>How much was the bill?</label>
+    <input type="text" value={bill} onChange={e => onChangeBill(e)} />
   </div>
 }
 function ServiceTips({children}){
@@ -32,7 +34,7 @@ function ServiceTips({children}){
   }
   return (
     <div>
-      <span>{children}</span>
+      <label>{children}</label>
       <select value={value} onChange={(e) => handleSelect(e)}>
         <option value={0}>Dislike(0)</option>
         <option value={5}>Okay(5%)</option>
@@ -41,5 +43,13 @@ function ServiceTips({children}){
       </select>
     </div>
   )
+}
+function OutPut(){
+  return <h3>
+    You pay X ($a + $b tip)
+  </h3>
+}
+function Reset(){
+  return <button>Reset</button>
 }
 export default App
