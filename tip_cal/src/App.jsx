@@ -44,9 +44,9 @@ function ServiceTips({value,onChangeValue,children}){
   )
 }
 function OutPut({bill,percentage1,percentage2}){
-  const total = bill + (bill * (percentage1 - percentage2)/100)
+  const total = bill + (bill * (percentage1 + percentage2)/100)
   return <h3>
-    You pay {total} ({bill} + {bill * (percentage1 - percentage2)/100} tip)
+    You pay {total} ({bill} + {(bill * percentage1 / 100) + (bill * percentage2 / 100) } tip)
   </h3>
 }
 function Reset({onChangeBill,onChangePercent1,onChangePercent2}){
