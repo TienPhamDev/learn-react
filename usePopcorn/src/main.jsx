@@ -5,6 +5,6 @@ import ReactDOM from 'react-dom/client'
 import StarRating from './StarRating'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <StarRating/>
+    <StarRating />
   </React.StrictMode>
 )
