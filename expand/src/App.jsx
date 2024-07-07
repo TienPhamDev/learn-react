@@ -37,7 +37,7 @@ export default function App() {
 
 function TextExpander({
   children , 
-  collapsedLength = 100,
+  collapsedLength = 20,
   expanded = false,
   className = "",
   expandButtonText="Show more",
@@ -49,12 +49,13 @@ function TextExpander({
   const handleToggleExpanded = () =>{
     setIsExpanded(!isExpanded)
   }
-  const displayText = isExpanded ? children : children.slice(0,collapsedLength) + " ... "
+  const displayText = isExpanded ? children : children.split(" ").slice(0,collapsedLength).join(" ") + " ... "
   // style
   const buttonStyle = {
     border : "none",
     color : `${buttonColor}`,
     backgroundColor: "transparent",
+    cursor : "pointer"
   }
   return (
     <div className={className}>
