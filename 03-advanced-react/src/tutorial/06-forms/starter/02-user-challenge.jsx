@@ -1,4 +1,24 @@
-const UserChallenge = () => {
+import { useState } from "react";
+
+const UserChallenge = (props) => {
+  
+  const [name,setName] = useState("");
+  const [data,setData] = useState(props.data);
+  const handleAddSubmit = (e)=>{
+    e.preventDefault();
+    if(!name) return;
+    const fakeId = Date.now();
+    setData([...data,{
+      id: fakeId,
+      name: name
+    }])
+    
+  }
+  const handleRemoveSubmit = (id)=>{
+   
+    const updateUsers = data.filter((user)=> {return user.id !== id})
+    setData(updateUsers)
+  }
   return (
     <div>
       <form className='form'>
@@ -7,14 +27,29 @@ const UserChallenge = () => {
           <label htmlFor='name' className='form-label'>
             name
           </label>
-          <input type='text' className='form-input' id='name' />
+          <input type='text' className='form-input' id='name' value={name}
+          onChange={(e)=> setName(e.target.value)}
+          />
         </div>
 
-        <button type='submit' className='btn btn-block'>
+        <button type='submit' className='btn btn-block'
+          onClick={handleAddSubmit}
+        >
           submit
         </button>
+        
       </form>
-      {/* render users below */}
+      {
+        data.map((user)=>{
+          return <div key={user.id}>{user.name}
+            <button type='submit' className='btn btn-block'
+              onClick={() => handleRemoveSubmit(user.id)}
+            >
+              remove
+            </button> 
+              </div>
+        })
+      }
     </div>
   );
 };
