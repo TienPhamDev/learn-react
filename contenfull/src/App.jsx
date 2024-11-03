@@ -1,4 +1,4 @@
-import Hero from "./hero";
+import Hero from "./Hero";
 import Project from "./Project";
 
 const App = () => {

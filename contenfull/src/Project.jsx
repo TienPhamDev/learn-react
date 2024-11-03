@@ -13,6 +13,22 @@ function Project() {
         <section className="projects">
             <div className="title">
                 <h2>Projects</h2>
+                <div className="titile-underline"></div>
+            </div>
+            <div className="projects-center">
+                {projects.map((project)=> {
+                    return (
+                        <a 
+                        key={project.id}
+                        href={project.url}
+                        className="project"
+                        rel='noreferrer'
+                        >
+                            <img className="img" src={project.img} alt={project.tittle} />
+                            <h5>{project.tittle}</h5>
+                        </a>
+                    )
+                })}
             </div>
         </section>
     );
